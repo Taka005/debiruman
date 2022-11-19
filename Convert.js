@@ -5,7 +5,7 @@
 async function ReadFile(text){//ファイル読み込み
   const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
-    //.then(d=>d.arraybuffer())
+    .then(d=>d.arraybuffer())
     .catch(e=>{
       console.log(e)
       alert(e)
