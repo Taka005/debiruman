@@ -112,10 +112,11 @@ form.addEventListener("submit",async(event)=>{
     const text = Replace(input.value).split("");
     
     let wav;
-    let blob1;
-    let blob2;
     let wav1;
     let wav2;
+    let blob;
+    let blob1;
+    let blob2;
     for(let i=0;i<text.length-1;i++){
       if(i==0){
         blob1 = await ReadFile(text[i]);
@@ -124,6 +125,7 @@ form.addEventListener("submit",async(event)=>{
       wav1 = await ReadBlob(blob1);
       wav2 = await ReadBlob(blob2);
       blob1 = Convert(wav1,wav2)
+      blob = new Blob(blob1)
     }
     blob1.SaveToFile("debiruman.wav","audio/wav");                
 })
