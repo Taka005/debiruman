@@ -12,15 +12,14 @@ async function ReadFile(text){//ファイル読み込み
   return wav;
 }
 
-function ReadBlob(blob){//Blob解析
-  const reader = new FileReader();
-    
-  reader.readAsArrayBuffer(blob);
-  let wav;
-  reader.onload = ()=>{
-    wav =  new TWaveFormat(new Uint8Array(reader.result));
-  };
-  return wav;
+async function ReadBlob(blob){//Blob解析
+  return new Promise((resolve)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      resolve(new TWaveFormat(new Uint8Array(reader.result)));
+    };
+    reader.readAsArrayBuffer(blob);
+  });
 }
 
 function Convert(wav1,wav2){//Wavファイル結合
