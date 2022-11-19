@@ -66,39 +66,39 @@ function Output(wav){//Web上に出力
 
 function Replace(text){
   const data = text
-    .replace("っ","つ")//小さい音
-    .replace("ぁ","あ")
-    .replace("ぃ","い")
-    .replace("ぅ","う")
-    .replace("ぇ","え")
-    .replace("ぉ","お")
-    .replace("ゃ","や")
-    .replace("ゅ","ゆ")
-    .replace("ょ","よ")
-    .replace("が","か")//か行
-    .replace("ぎ","き")
-    .replace("ぐ","く")
-    .replace("げ","け")
-    .replace("ご","こ")
-    .replace("ざ","さ")//さ行
-    .replace("じ","し")
-    .replace("ず","す")
-    .replace("ぜ","せ")
-    .replace("ぞ","そ")
-    .replace("ぢ","ち")//た行(「だ」は例外)
-    .replace("づ","つ")
-    .replace("で","て")
-    .replace("ど","と")
-    .replace("ば","は")//は行 濁音
-    .replace("び","ひ")
-    .replace("ぶ","ふ")
-    .replace("べ","へ")
-    .replace("ぼ","ほ")
-    .replace("ぱ","は")//は行 半濁音
-    .replace("ぴ","へ")
-    .replace("ぷ","ふ")
-    .replace("ぺ","へ")
-    .replace("ぽ","ほ")
+    .replace(/っ/g,"つ")//小さい音
+    .replace(/ぁ/g,"あ")
+    .replace(/ぃ/g,"い")
+    .replace(/ぅ/g,"う")
+    .replace(/ぇ/g,"え")
+    .replace(/ぉ/g,"お")
+    .replace(/ゃ/g,"や")
+    .replace(/ゅ/g,"ゆ")
+    .replace(/ょ/g,"よ")
+    .replace(/が/g,"か")//か行
+    .replace(/ぎ/g,"き")
+    .replace(/ぐ/g,"く")
+    .replace(/げ/g,"け")
+    .replace(/ご/g,"こ")
+    .replace(/ざ/g,"さ")//さ行
+    .replace(/じ/g,"し")
+    .replace(/ず/g,"す")
+    .replace(/ぜ/g,"せ")
+    .replace(/ぞ/g,"そ")
+    .replace(/ぢ/g,"ち")//た行(「だ」は例外)
+    .replace(/づ/g,"つ")
+    .replace(/で/g,"て")
+    .replace(/ど/g,"と")
+    .replace(/ば/g,"は")//は行 濁音
+    .replace(/び/g,"ひ")
+    .replace(/ぶ/g,"ふ")
+    .replace(/べ/g,"へ")
+    .replace(/ぼ/g,"ほ")
+    .replace(/ぱ/g,"は")//は行 半濁音
+    .replace(/ぴ/g,"へ")
+    .replace(/ぷ/g,"ふ")
+    .replace(/ぺ/g,"へ")
+    .replace(/ぽ/g,"ほ")
 
   return data;
 }
