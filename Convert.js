@@ -2,8 +2,6 @@
  * デビルマン音声生成プログラム
  * Develop By Taka005
  */
-const form = document.getElementById("form");
-
 function ReadFile(text){//ファイル読み込み
   const wav = fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob)
@@ -68,6 +66,7 @@ function Output(wav){//Web上に出力
   AudioElement.src = URL.createObjectURL(Audio);
 }
 
+const form = document.getElementById("form");
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   const input = document.getElementById("input");
