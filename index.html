@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <script src ="./WAVE.js"></script>
-<script src ="./convert.js"></script>
+<script src ="./Convert.js"></script>
 </head>
 <body>  
 <h1>Combine</h1>
-<p></p>
-<table>
-  <tr><th>File 1</th><td>&nbsp;<input type="file" id="inputfile1" accept="audio/wav" onchange="onAddFile(event, 1);"></td></tr>
-  <tr><th>File 2</th><td>&nbsp;<input type="file" id="inputfile2" accept="audio/wav" onchange="onAddFile(event, 2);"></td></tr>
-</table>    
+<p></p>   
 <input type="text" id="input">
 <p></p> 
 <form>
 <p></p> 
-<input type="submit" onclick="return run();" value="R U N">
+<input type="submit" onclick="return Run();" value="R U N">
 </form>
+<audio id="audio" controls></audio>
 </body>
 </html> 
  
