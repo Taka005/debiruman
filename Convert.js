@@ -68,13 +68,13 @@ function Output(wav){//Web上に出力
   AudioElement.src = URL.createObjectURL(Audio);
 }
 
-form.addEventListener("submit",(event)=>{
+form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   const input = document.getElementById("input");
   const text = input.value.split("")
   if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
   
-  text.forEach((e,i)=>{
+  text.forEach(async(e,i)=>{
     const blob1 = await ReadFile(e);
     const blob2 = await ReadFile(text[i+1]);
     const wav1 = await ReadBlob(blob1);
