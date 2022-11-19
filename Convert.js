@@ -74,11 +74,9 @@ form.addEventListener("submit",async(event)=>{
   const text = input.value.split("")
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
   
-  text.forEach(async(e,i)=>{
-    const blob1 = await ReadFile(e);
-    const blob2 = await ReadFile(text[i+1]);
+    const blob1 = await ReadFile(text[0]);
+    const blob2 = await ReadFile(text[1]);
     const wav1 = ReadBlob(blob1);
     const wav2 = ReadBlob(blob2);
     Output(Convert(wav1,wav2))
-  });
 })
