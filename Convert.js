@@ -22,13 +22,12 @@ function ReadBlob(blob){//Blob解析
   };
 
   reader.readAsArrayBuffer(blob);
-
+  console.log(wav)
   return wav;
 }
 
 function Convert(wav1,wav2){//Wavファイル結合
   try{
-    console.log(wav1);
     const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
     const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
 
