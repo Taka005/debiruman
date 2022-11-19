@@ -9,17 +9,15 @@ async function ReadFile(text){//ファイル読み込み
       console.log(e)
       alert(e)
     })
-  return wav
+  return wav;
 }
 
 function ReadBlob(blob){//Blob解析
   const reader = new FileReader();
     
   reader.readAsArrayBuffer(blob);
-  let wav;
-  reader.onload = ()=>{
-    wav = new TWaveFormat(new Uint8Array(reader.result));
-    console.log(wav)
+  const wav =  reader.onload = ()=>{
+    return new TWaveFormat(new Uint8Array(reader.result));
   };
   return wav;
 }
