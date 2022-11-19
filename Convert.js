@@ -5,7 +5,6 @@
 async function ReadFile(text){//ファイル読み込み
   const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
-    .then(d=>d.arraybuffer())
     .catch(e=>{
       console.log(e)
       alert(e)
@@ -14,15 +13,14 @@ async function ReadFile(text){//ファイル読み込み
 }
 
 function ReadBlob(blob){//Blob解析
-  const reader = new FileReader();  
+  const reader = new FileReader();
+    
+  reader.readAsArrayBuffer(blob);
   let wav;
- 
   reader.onload = ()=>{
     wav = new TWaveFormat(new Uint8Array(reader.result));
+    console.log(wav)
   };
-
-  reader.readAsArrayBuffer(blob);
-  console.log(wav)
   return wav;
 }
 
