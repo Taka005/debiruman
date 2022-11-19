@@ -10,8 +10,10 @@
   if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
   
   text.forEach((e,i)=>{
-    const wav1 = await ReadBlob(await ReadFile(e));
-    const wav2 = await ReadBlob(await ReadFile(text[i+1]));
+    const blob1 = await ReadFile(e);
+    const blob2 =await ReadFile(text[i+1]);
+    const wav1 = await ReadBlob(blob1);
+    const wav2 = await ReadBlob(blob2);
     Output(await Convert(wav1,wav2))
   });
 })
@@ -20,9 +22,9 @@ function ReadFile(text){//ファイル読み込み
   return fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob)
     .catch(e=>{
-      console.log(e);
+      console.log(e)
       alert(e)
-    });
+    })
 }
 
 function ReadBlob(blob){//Blob解析
