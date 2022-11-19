@@ -64,13 +64,50 @@ function Output(wav){//Web上に出力
   AudioElement.src = URL.createObjectURL(Audio);
 }
 
+function Replace(text){
+  text.replace("っ","つ")//小さい音
+      .replace("ぁ","あ")
+      .replace("ぃ","い")
+      .replace("ぅ","う")
+      .replace("ぇ","え")
+      .replace("ぉ","お")
+      .replace("ゃ","や")
+      .replace("ゅ","ゆ")
+      .replace("ょ","よ")
+      .replace("が","か")//か行
+      .replace("ぎ","き")
+      .replace("ぐ","く")
+      .replace("げ","け")
+      .replace("ご","こ")
+      .replace("ざ","さ")//さ行
+      .replace("じ","し")
+      .replace("ず","す")
+      .replace("ぜ","せ")
+      .replace("ぞ","そ")
+      .replace("ぢ","ち")//た行(「だ」は例外)
+      .replace("づ","つ")
+      .replace("で","て")
+      .replace("ど","と")
+      .replace("ば","は")//は行 濁音
+      .replace("び","ひ")
+      .replace("ぶ","ふ")
+      .replace("べ","へ")
+      .replace("ぼ","ほ")
+      .replace("ぱ","は")//は行 半濁音
+      .replace("ぴ","へ")
+      .replace("ぷ","ふ")
+      .replace("ぺ","へ")
+      .replace("ぽ","ほ")
+
+  return text;
+}
 const form = document.getElementById("form");
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
-  const input = document.getElementById("input");
-  const text = input.value.split("")
+  let input = document.getElementById("input");
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
-  
+    const text = Replace(input.value).split("");
+    
     const blob1 = await ReadFile(text[0]);
     const blob2 = await ReadFile(text[1]);
     const wav1 = await ReadBlob(blob1);
