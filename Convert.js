@@ -73,8 +73,8 @@ form.addEventListener("submit",async(event)=>{
   
     const blob1 = await ReadFile(text[0]);
     const blob2 = await ReadFile(text[1]);
-    const wav1 = ReadBlob(blob1);
-    const wav2 = ReadBlob(blob2);
+    const wav1 = await ReadBlob(blob1);
+    const wav2 = await ReadBlob(blob2);
     console.log(wav1)
     console.log(wav2)
     Output(Convert(wav1,wav2))
