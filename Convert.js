@@ -25,10 +25,8 @@ function ReadBlob(blob){//Blob解析
 
 function Convert(wav1,wav2){//Wavファイル結合
   try{
-    console.log(wav1)
-    console.log(wav2)
-    const st = new TWaveFormat(wav1.SaveToStream(parseInt(16,10),true,parseInt(48000),true));         
-    const en = new TWaveFormat(wav2.SaveToStream(parseInt(16),true,parseInt(48000),true));
+    const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
+    const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
 
     let data1 = st.getData();
     let data2 = en.getData();
@@ -78,5 +76,7 @@ form.addEventListener("submit",async(event)=>{
     const blob2 = await ReadFile(text[1]);
     const wav1 = ReadBlob(blob1);
     const wav2 = ReadBlob(blob2);
+    console.log(wav1)
+    console.log(wav2)
     Output(Convert(wav1,wav2))
 })
