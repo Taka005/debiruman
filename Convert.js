@@ -107,12 +107,23 @@ const form = document.getElementById("form");
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   let input = document.getElementById("input");
+  if(!input.value||input.value.length<2) return alert("二文字以上で入力してください")
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
     const text = Replace(input.value).split("");
     
-    const blob1 = await ReadFile(text[0]);
-    const blob2 = await ReadFile(text[1]);
-    const wav1 = await ReadBlob(blob1);
-    const wav2 = await ReadBlob(blob2);
-    Convert(wav1,wav2).SaveToFile("debiruman.wav","audio/wav");                
+    let wav;
+    let blob1;
+    let blob2;
+    let wav1;
+    let wav2;
+    for(let i=0;i<text.length-1;i++){
+      if(i==0){
+        blob1 = await ReadFile(text[i]);
+      }
+      blob2 = await ReadFile(text[i+1]);
+      wav1 = await ReadBlob(blob1);
+      wav2 = await ReadBlob(blob2);
+      blob1 = Convert(wav1,wav2)
+    }
+    blob1.SaveToFile("debiruman.wav","audio/wav");                
 })
