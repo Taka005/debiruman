@@ -4,8 +4,8 @@
  */
 const form = document.getElementById("form");
 
-async function ReadFile(text){//ファイル読み込み
-  return await fetch(`./sounds/${text}.wav`)
+function ReadFile(text){//ファイル読み込み
+  return fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob)
     .catch(e=>{
       console.log(e)
@@ -13,7 +13,7 @@ async function ReadFile(text){//ファイル読み込み
     })
 }
 
-async function ReadBlob(blob){//Blob解析
+function ReadBlob(blob){//Blob解析
   const reader = new FileReader();  
   let wav;
   reader.onload = ()=>{
@@ -25,7 +25,7 @@ async function ReadBlob(blob){//Blob解析
   return wav;
 }
 
-async function Convert(wav1,wav2){//Wavファイル結合
+function Convert(wav1,wav2){//Wavファイル結合
   try{
     const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
     const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
@@ -78,6 +78,6 @@ form.addEventListener("submit",(event)=>{
     const blob2 = await ReadFile(text[i+1]);
     const wav1 = await ReadBlob(blob1);
     const wav2 = await ReadBlob(blob2);
-    Output(await Convert(wav1,wav2))
+    Output(Convert(wav1,wav2))
   });
 })
