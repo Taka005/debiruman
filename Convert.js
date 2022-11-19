@@ -2,21 +2,7 @@
  * デビルマン音声生成プログラム
  * Develop By Taka005
  */
- const form = document.getElementById("form");
- form.addEventListener("submit",(event)=>{
-  event.preventDefault();
-  const input = document.getElementById("input");
-  const text = input.value.split("")
-  if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
-  
-  text.forEach((e,i)=>{
-    const blob1 = await ReadFile(e);
-    const blob2 = await ReadFile(text[i+1]);
-    const wav1 = await ReadBlob(blob1);
-    const wav2 = await ReadBlob(blob2);
-    Output(await Convert(wav1,wav2))
-  });
-})
+const form = document.getElementById("form");
 
 async function ReadFile(text){//ファイル読み込み
   return await fetch(`./sounds/${text}.wav`)
@@ -81,4 +67,17 @@ function Output(wav){//Web上に出力
   AudioElement.src = URL.createObjectURL(Audio);
 }
 
-Run()
+form.addEventListener("submit",(event)=>{
+  event.preventDefault();
+  const input = document.getElementById("input");
+  const text = input.value.split("")
+  if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
+  
+  text.forEach((e,i)=>{
+    const blob1 = await ReadFile(e);
+    const blob2 = await ReadFile(text[i+1]);
+    const wav1 = await ReadBlob(blob1);
+    const wav2 = await ReadBlob(blob2);
+    Output(await Convert(wav1,wav2))
+  });
+})
