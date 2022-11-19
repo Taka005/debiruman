@@ -11,15 +11,15 @@
   
   text.forEach((e,i)=>{
     const blob1 = await ReadFile(e);
-    const blob2 =await ReadFile(text[i+1]);
+    const blob2 = await ReadFile(text[i+1]);
     const wav1 = await ReadBlob(blob1);
     const wav2 = await ReadBlob(blob2);
     Output(await Convert(wav1,wav2))
   });
 })
 
-function ReadFile(text){//ファイル読み込み
-  return fetch(`./sounds/${text}.wav`)
+async function ReadFile(text){//ファイル読み込み
+  return await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob)
     .catch(e=>{
       console.log(e)
@@ -27,7 +27,7 @@ function ReadFile(text){//ファイル読み込み
     })
 }
 
-function ReadBlob(blob){//Blob解析
+async function ReadBlob(blob){//Blob解析
   const reader = new FileReader();  
   const wav;
   reader.onload = ()=>{
@@ -39,7 +39,7 @@ function ReadBlob(blob){//Blob解析
   return wav;
 }
 
-function Convert(wav1,wav2){//Wavファイル結合
+async function Convert(wav1,wav2){//Wavファイル結合
   try{
     const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
     const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
