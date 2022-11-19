@@ -71,7 +71,7 @@ form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   const input = document.getElementById("input");
   const text = input.value.split("")
-  if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
+  if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
   
   text.forEach(async(e,i)=>{
     const blob1 = await ReadFile(e);
