@@ -5,12 +5,13 @@
 const form = document.getElementById("form");
 
 function ReadFile(text){//ファイル読み込み
-  return fetch(`./sounds/${text}.wav`)
+  const wav = fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob)
     .catch(e=>{
       console.log(e)
       alert(e)
     })
+  return wav
 }
 
 function ReadBlob(blob){//Blob解析
