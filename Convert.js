@@ -65,42 +65,44 @@ function Output(wav){//Web上に出力
 }
 
 function Replace(text){
-  text.replace("っ","つ")//小さい音
-      .replace("ぁ","あ")
-      .replace("ぃ","い")
-      .replace("ぅ","う")
-      .replace("ぇ","え")
-      .replace("ぉ","お")
-      .replace("ゃ","や")
-      .replace("ゅ","ゆ")
-      .replace("ょ","よ")
-      .replace("が","か")//か行
-      .replace("ぎ","き")
-      .replace("ぐ","く")
-      .replace("げ","け")
-      .replace("ご","こ")
-      .replace("ざ","さ")//さ行
-      .replace("じ","し")
-      .replace("ず","す")
-      .replace("ぜ","せ")
-      .replace("ぞ","そ")
-      .replace("ぢ","ち")//た行(「だ」は例外)
-      .replace("づ","つ")
-      .replace("で","て")
-      .replace("ど","と")
-      .replace("ば","は")//は行 濁音
-      .replace("び","ひ")
-      .replace("ぶ","ふ")
-      .replace("べ","へ")
-      .replace("ぼ","ほ")
-      .replace("ぱ","は")//は行 半濁音
-      .replace("ぴ","へ")
-      .replace("ぷ","ふ")
-      .replace("ぺ","へ")
-      .replace("ぽ","ほ")
+  const data = text
+    .replace("っ","つ")//小さい音
+    .replace("ぁ","あ")
+    .replace("ぃ","い")
+    .replace("ぅ","う")
+    .replace("ぇ","え")
+    .replace("ぉ","お")
+    .replace("ゃ","や")
+    .replace("ゅ","ゆ")
+    .replace("ょ","よ")
+    .replace("が","か")//か行
+    .replace("ぎ","き")
+    .replace("ぐ","く")
+    .replace("げ","け")
+    .replace("ご","こ")
+    .replace("ざ","さ")//さ行
+    .replace("じ","し")
+    .replace("ず","す")
+    .replace("ぜ","せ")
+    .replace("ぞ","そ")
+    .replace("ぢ","ち")//た行(「だ」は例外)
+    .replace("づ","つ")
+    .replace("で","て")
+    .replace("ど","と")
+    .replace("ば","は")//は行 濁音
+    .replace("び","ひ")
+    .replace("ぶ","ふ")
+    .replace("べ","へ")
+    .replace("ぼ","ほ")
+    .replace("ぱ","は")//は行 半濁音
+    .replace("ぴ","へ")
+    .replace("ぷ","ふ")
+    .replace("ぺ","へ")
+    .replace("ぽ","ほ")
 
-  return text;
+  return data;
 }
+
 const form = document.getElementById("form");
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
