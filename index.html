@@ -14,37 +14,6 @@
 </table>    
 <p></p> 
 <form>
- <table>
-   <tr><th>Bit</th>
-       <td><select id="lst_bit">
-                 <option value="8">unsigned 8-bit [PCM]</option>
-                 <option value="16" selected="selected">Signed 16-bit [PCM]</option>
-                 <option value="24">Signed 24-bit [PCM]</option>
-                 <option value="32">Signed 32-bit [PCM]</option>
-               </select></td></tr>
-  <tr><th>Frequency</th>
-      <td><input type="number" id="num_Hz" style="width:70px;text-align:right;" min="1" max="999999" value ="48000" required> 
-               <select onchange="document.getElementById('num_Hz').value = this.value">
-                 <option value="8000">8000</option>
-                 <option value="11025">11025</option>
-                 <option value="16000">16000</option>
-                 <option value="22050">22050</option>
-                 <option value="32000">32000</option>
-                 <option value="44100">44100</option>
-                 <option value="48000" selected="selected">48000</option>
-                 <option value="88200">88200</option>
-                 <option value="96000">96000</option>
-                 <option value="176400">176400</option>
-                 <option value="192000">192000</option>
-                 <option value="352800">352800</option>
-                 <option value="384000">384000</option>
-               </select> Hz</td></tr>
-   <tr><th>Channel</th>
-       <td><select id="lst_channel">
-                 <option value="2" selected="selected">Stereo (2 Channel)</option>
-                 <option value="1">Mono (1 Channel)</option>
-               </select></td></tr>                        
- </table>
 <p></p> 
 <input type="submit" onclick="return run();" value="R U N">
 </form>

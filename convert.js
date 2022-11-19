@@ -2,24 +2,11 @@ var wav1;
 var wav2;
  
 function run(){
-  if (!document.getElementById("num_Hz").checkValidity()){
-    return true;
-  }   
-      
-  var bit       = parseInt(document.getElementById("lst_bit").value,10);
-  var frequency = parseInt(document.getElementById("num_Hz").value,10);
-  var channel   = parseInt(document.getElementById("lst_channel").value,10);
-  
-  var stereo; 
-  if (channel == 2){
-    stereo = true;
-  }else{  
-    stereo = false;
-  }        
+  var bit       = 16;
+  var frequency = 48000;
+  var stereo = true;
   
   if(!wav1 && !wav2) return false;
-  
-console.time("run");     
       
   try{
     
@@ -67,8 +54,6 @@ console.time("run");
     alert("Could not acquire waveform data. (unsupported format)");
     console.error(e);         
   }
-  
-console.timeEnd("run");
   
   return false;
 }
