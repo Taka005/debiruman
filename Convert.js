@@ -5,7 +5,7 @@
 async function ReadFile(text){//ファイル読み込み
   const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
-    //.then(d=>d.arraybuffer())
+    .then(d=>d.arraybuffer())
     .catch(e=>{
       console.log(e)
       alert(e)
@@ -28,7 +28,7 @@ function ReadBlob(blob){//Blob解析
 
 function Convert(wav1,wav2){//Wavファイル結合
   try{
-    alert(wav1);
+    console.log(wav1);
     const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
     const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
 
