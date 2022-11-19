@@ -4,8 +4,8 @@
  */
 function ReadFile(text){//ファイル読み込み
   const wav = fetch(`./sounds/${text}.wav`)
-    .then(res=>res.blob)
-    .then(d=>d.arraybuffer())
+    .then(res=>res.blob())
+    //.then(d=>d.arraybuffer())
     .catch(e=>{
       console.log(e)
       alert(e)
