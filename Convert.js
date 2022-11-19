@@ -16,8 +16,9 @@ function ReadBlob(blob){//Blob解析
   const reader = new FileReader();
     
   reader.readAsArrayBuffer(blob);
-  const wav =  reader.onload = ()=>{
-    return new TWaveFormat(new Uint8Array(reader.result));
+  let wav;
+  reader.onload = ()=>{
+    wav =  new TWaveFormat(new Uint8Array(reader.result));
   };
   return wav;
 }
