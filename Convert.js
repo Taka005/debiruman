@@ -2,8 +2,9 @@
  * デビルマン音声生成プログラム
  * Develop By Taka005
  */
-
-async function Run(){
+ const form = document.getElementById("form");
+ form.addEventListener("submit",(event)=>{
+  event.preventDefault();
   const input = document.getElementById("input");
   const text = input.value.split("")
   if(!input.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
@@ -13,7 +14,7 @@ async function Run(){
     const wav2 = await ReadBlob(await ReadFile(text[i+1]));
     Output(await Convert(wav1,wav2))
   });
-}
+})
 
 function ReadFile(text){//ファイル読み込み
   return fetch(`./sounds/${text}.wav`)
