@@ -28,6 +28,7 @@ function ReadBlob(blob){//Blob解析
 
 function Convert(wav1,wav2){//Wavファイル結合
   try{
+    alert(wav1);
     const st = new TWaveFormat(wav1.SaveToStream(16,true,48000,true));         
     const en = new TWaveFormat(wav2.SaveToStream(16,true,48000,true));
 
