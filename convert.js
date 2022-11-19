@@ -2,21 +2,16 @@ var wav1;
 var wav2;
  
 function run(){
-  var bit       = 16;
-  var frequency = 48000;
-  var stereo = true;
-  
   if(!wav1 && !wav2) return false;
       
   try{
-    
     // Convert 1
-    var file = wav1.SaveToStream(bit, stereo, frequency, true);
+    var file = wav1.SaveToStream(16,true,48000,true);
     var st = new TWaveFormat(file);         
     
     // Convert 2
-    var file = wav2.SaveToStream(bit, stereo, frequency, true);
-    var en = new TWaveFormat(file);         
+    var file = wav2.SaveToStream(16,true,48000,true);
+    var en = new TWaveFormat(file);
     
     // Raw
     var data1 = st.getData();
@@ -31,25 +26,21 @@ function run(){
     for(var i=0;i<data2.L.length;i++){
       tmpL.push(data2.L[i]); 
     }    
-    
-    // R
-    if(data1.R.length != 0){ 
-      for(var i=0;i<data1.R.length;i++){
-        tmpR.push(data1.R[i]); 
-      }
-      for(var i=0;i<data2.R.length;i++){
-        tmpR.push(data2.R[i]); 
-      }    
+    // R 
+    for(var i=0;i<data1.R.length;i++){
+      tmpR.push(data1.R[i]); 
+    }
+    for(var i=0;i<data2.R.length;i++){
+      tmpR.push(data2.R[i]); 
     }
  
     data.L = tmpL;
     data.R = tmpR;
     
     // Save
-    var F = wav1.WriteStream(bit, data, frequency);
+    var F = wav1.WriteStream(16,data,48000);
     F.SaveToFile("debiruman.wav","audio/wav");                
-    
-     
+
   }catch(e){
     alert("Could not acquire waveform data. (unsupported format)");
     console.error(e);         
@@ -66,10 +57,9 @@ function onAddFile(event, val) {
     files = event.target.files;
   } 
   
-  reader.onload = function (event) {
+  reader.onload = function(){
  
     try{
-      
       var wav;
       if(val == "1"){
          wav1 = new TWaveFormat(new Uint8Array(reader.result));
@@ -77,21 +67,7 @@ function onAddFile(event, val) {
       }else{
          wav2 = new TWaveFormat(new Uint8Array(reader.result));
          wav = wav2;
-      }     
-      
-      var str = wav.Analyst.WaveFomat.wBitsPerSample + "bit ";
-      str += wav.Analyst.WaveFomat.nSamplesPerSec + "Hz ";
-     
-      if(wav.Analyst.WaveFomat.nChannels == 1){
-        str += " Mono ";
-      }else{
-        str += " Stereo ";
-      }
-      
-      str += Math.round(wav.Analyst.time)/1000 + "s";
-      
-      document.getElementById("msg"+ val).innerHTML =str;  
-     
+      }  
     }catch(e){
       alert(e);
       console.error(e); 
