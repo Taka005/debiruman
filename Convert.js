@@ -15,7 +15,7 @@ async function ReadFile(text){//ファイル読み込み
 
 async function ReadBlob(blob){//Blob解析
   const reader = new FileReader();  
-  const wav;
+  let wav;
   reader.onload = ()=>{
     wav = new TWaveFormat(new Uint8Array(reader.result));
   };
