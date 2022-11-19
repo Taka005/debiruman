@@ -2,8 +2,8 @@
  * デビルマン音声生成プログラム
  * Develop By Taka005
  */
-function ReadFile(text){//ファイル読み込み
-  const wav = fetch(`./sounds/${text}.wav`)
+async function ReadFile(text){//ファイル読み込み
+  const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
     //.then(d=>d.arraybuffer())
     .catch(e=>{
@@ -16,6 +16,7 @@ function ReadFile(text){//ファイル読み込み
 function ReadBlob(blob){//Blob解析
   const reader = new FileReader();  
   let wav;
+ 
   reader.onload = ()=>{
     wav = new TWaveFormat(new Uint8Array(reader.result));
   };
@@ -77,8 +78,8 @@ form.addEventListener("submit",async(event)=>{
   text.forEach(async(e,i)=>{
     const blob1 = await ReadFile(e);
     const blob2 = await ReadFile(text[i+1]);
-    const wav1 = await ReadBlob(blob1);
-    const wav2 = await ReadBlob(blob2);
+    const wav1 = ReadBlob(blob1);
+    const wav2 = ReadBlob(blob2);
     Output(Convert(wav1,wav2))
   });
 })
