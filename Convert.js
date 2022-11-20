@@ -126,6 +126,7 @@ form.addEventListener("submit",async(event)=>{
       wav = Convert(wav1,wav2);
       console.log(wav)
       wav1 = new TWaveFormat(new Uint8Array(wav))
+      console.log(wav1)
     }
 
   wav.SaveToFile("debiruman.wav","audio/wav");   
