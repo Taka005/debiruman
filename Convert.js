@@ -3,7 +3,6 @@
  * Develop By Taka005
  */
 async function ReadFile(text){//ファイル読み込み
-  console.log(text)
   const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
     .catch(e=>{
@@ -125,10 +124,9 @@ form.addEventListener("submit",async(event)=>{
       blob2 = await ReadFile(text[i+1]);
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
-      wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
-      console.log(wav1)
-      console.log(wav)
+      wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"});
     }
+    console.log(wav)
     //Output(new Uint8Array(wav))
     wav.SaveToFile("debiruman.wav","audio/wav");   
   }catch(e){
