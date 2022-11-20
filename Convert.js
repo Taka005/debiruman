@@ -110,25 +110,25 @@ form.addEventListener("submit",async(event)=>{
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
     const text = Replace(input.value).split("");
     
-    try{
-      let wav;
-      let wav1;
-      let wav2;
-      let blob1;
-      let blob2;
-      for(let i=0;i<text.length-1;i++){
-        if(i==0){
-          blob1 = await ReadFile(text[i]);
-          wav1 = await ReadBlob(blob1);
-        }
-        blob2 = await ReadFile(text[i+1]);
-        wav2 = await ReadBlob(blob2);
-        wav = Convert(wav1,wav2);
-        console.log(wav)
-        wav1 = new Blob([wav],{type:"audio/wav"})
+  try{
+    let wav;
+    let wav1;
+    let wav2;
+    let blob1;
+    let blob2;
+    for(let i=0;i<text.length-1;i++){
+      if(i==0){
+        blob1 = await ReadFile(text[i]);
+        wav1 = await ReadBlob(blob1);
       }
+      blob2 = await ReadFile(text[i+1]);
+      wav2 = await ReadBlob(blob2);
+      wav = Convert(wav1,wav2);
+      console.log(wav)
+      wav1 = new TWaveFormat(wav)
+    }
 
-    wav.SaveToFile("debiruman.wav","audio/wav");   
+  wav.SaveToFile("debiruman.wav","audio/wav");   
   }catch(e){
     console.log(e)
     alert(e)
