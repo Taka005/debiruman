@@ -3,6 +3,7 @@
  * Develop By Taka005
  */
 async function ReadFile(text){//ファイル読み込み
+  console.log(text)
   const wav = await fetch(`./sounds/${text}.wav`)
     .then(res=>res.blob())
     .catch(e=>{
