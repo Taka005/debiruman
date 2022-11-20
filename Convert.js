@@ -49,7 +49,7 @@ function Convert(wav1,wav2){//Wavファイル結合
 
     data.L = tmpL;
     data.R = tmpR;
-  
+    console.log(data)
     return wav1.WriteStream(16,data,48000);
   }catch(e){
     console.log(e);
@@ -126,7 +126,6 @@ form.addEventListener("submit",async(event)=>{
       wav = Convert(wav1,wav2);
       console.log(wav)
       wav1 = new TWaveFormat(new Uint8Array(wav))
-      console.log(wav1)
     }
 
   wav.SaveToFile("debiruman.wav","audio/wav");   
