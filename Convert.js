@@ -124,8 +124,7 @@ form.addEventListener("submit",async(event)=>{
       blob2 = await ReadFile(text[i+1]);
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
-      wav1 = new Uint8Array(wav)
-      //],{type:"audio/wav"});
+      wav1 = new Blob([wav],{type:"audio/wav"});
     }
     console.log(wav)
     //Output(new Uint8Array(wav))
