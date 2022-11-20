@@ -108,7 +108,7 @@ form.addEventListener("submit",async(event)=>{
   if(input.value.length<2) return alert("二文字以上で入力してください")
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
   const text = Replace(input.value).split("");
-    
+    console.log(text)
   try{
     let wav;
     let wav1;
@@ -116,18 +116,23 @@ form.addEventListener("submit",async(event)=>{
     let blob1;
     let blob2;
     
-    for(let i;i<text.length-1;i++){
-      if(i==0){
-        blob1 = await ReadFile(text[i]);
-      }
-      blob2 = await ReadFile(text[i+1]);
-      wav1 = await ReadBlob(blob1);
-      wav2 = await ReadBlob(blob2);
-      wav = Convert(wav1,wav2);
-      wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"});
-    }
+    let blob1 = await ReadFile(text[0]);
+    console.log(blob1)
+    let wav1 = await ReadBlob(blob1);
+    console.log(wav1)
+    let blob2 = await ReadFile(text[1]);
+    console.log(blob2)
+    let wav2 = await ReadBlob(blob2);
+    console.log(wav2)
+    let wav = Convert(wav1,wav2);
     console.log(wav)
-    //Output(new Uint8Array(wav))
+    wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"});
+    let blob3 = await ReadFile(text[2]);
+    console.log(blob3)
+    let wav3 = await ReadBlob(blob3);
+    console.log(wav3)
+    wav = Convert(wav1,wav3);
+
     wav.SaveToFile("debiruman.wav","audio/wav");   
   }catch(e){
     console.log(e)
