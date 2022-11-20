@@ -16,7 +16,6 @@ async function ReadBlob(blob){//Blob解析
   return new Promise((resolve)=>{
     const reader = new FileReader();
     reader.onload = ()=>{
-      console.log(reader.result)
       resolve(new TWaveFormat(new Uint8Array(reader.result)));
     };
     reader.readAsArrayBuffer(blob);
@@ -119,14 +118,12 @@ form.addEventListener("submit",async(event)=>{
     for(let i=0;i<text.length-1;i++){
       if(i==0){
         blob1 = await ReadFile(text[i]);
-        wav1 = await ReadBlob(blob1);
       }
       blob2 = await ReadFile(text[i+1]);
-      console.log(blob1)
+      wav1 = await ReadBlob(blob1);
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
-      console.log(wav)
-      wav1 = new TWaveFormat(new Uint8Array(wav))
+      wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
     }
 
   wav.SaveToFile("debiruman.wav","audio/wav");   
