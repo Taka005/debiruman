@@ -123,7 +123,7 @@ form.addEventListener("submit",async(event)=>{
     console.log(wav)
     wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
     console.log(wav1)
-    let blob4 = await ReadBlob(blob4);
+    let blob4 = await ReadBlob(wav1);
     console.log(blob4)
     let blob3 = await ReadFile(text[2]);
     console.log(blob3)
