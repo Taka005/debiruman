@@ -59,7 +59,7 @@ function Convert(wav1,wav2){//Wavファイル結合
 function Output(wav){//Web上に出力
   const AudioElement = document.getElementById("audio");
   const Audio = new Blob([wav],{type:"audio/wav"});
-  AudioElement.src = window.URL.createObjectURL(Audio);
+  AudioElement.href = window.URL.createObjectURL(Audio);
 }
 
 function Replace(text){
