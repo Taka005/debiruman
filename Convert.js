@@ -126,7 +126,7 @@ form.addEventListener("submit",async(event)=>{
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
       wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
-      console.log(blob1)
+      console.log(wav1)
     }
     //Output(new Uint8Array(wav))
     wav.SaveToFile("debiruman.wav","audio/wav");   
