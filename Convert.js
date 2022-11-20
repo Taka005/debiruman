@@ -59,7 +59,7 @@ function Convert(wav1,wav2){//Wavファイル結合
 function Output(wav){//Web上に出力
   const AudioElement = document.getElementById("audio");
   const Audio = new Blob([wav],{type:"audio/wav"});
-  AudioElement.href = window.URL.createObjectURL(Audio);
+  AudioElement.src = window.URL.createObjectURL(Audio);
 }
 
 function Replace(text){
@@ -124,9 +124,9 @@ form.addEventListener("submit",async(event)=>{
       wav1 = await ReadBlob(blob1);
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
-      wav1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
+      blob1 = new Blob([new Uint8Array(wav)],{type:"audio/wav"})
     }
-  Output(new Uint8Array(wav))
+  //Output(new Uint8Array(wav))
   wav.SaveToFile("debiruman.wav","audio/wav");   
   }catch(e){
     console.log(e)
