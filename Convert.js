@@ -108,6 +108,7 @@ form.addEventListener("submit",async(event)=>{
   if(!input.value||input.value.length<2) return alert("二文字以上で入力してください")
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
     const text = Replace(input.value).split("");
+    console.log(text)
     
   try{
     let wav;
