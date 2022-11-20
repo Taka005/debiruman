@@ -50,7 +50,6 @@ function Convert(wav1,wav2){//Wavファイル結合
 
     data.L = tmpL;
     data.R = tmpR;
-    console.log(data)
     return wav1.WriteStream(16,data,48000);
   }catch(e){
     console.log(e);
@@ -123,6 +122,7 @@ form.addEventListener("submit",async(event)=>{
         wav1 = await ReadBlob(blob1);
       }
       blob2 = await ReadFile(text[i+1]);
+      console.log(blob1)
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
       console.log(wav)
