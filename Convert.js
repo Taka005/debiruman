@@ -110,11 +110,6 @@ form.addEventListener("submit",async(event)=>{
   const text = Replace(input.value).split("");
     console.log(text)
   try{
-    let wav;
-    let wav1;
-    let wav2;
-    let blob1;
-    let blob2;
     
     let blob1 = await ReadFile(text[0]);
     console.log(blob1)
