@@ -105,10 +105,9 @@ const form = document.getElementById("form");
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   let input = document.getElementById("input");
-  if(!input.value||input.value.length<2) return alert("二文字以上で入力してください")
+  if(input.value.length<2) return alert("二文字以上で入力してください")
   if(!input.value.match(/^[ぁ-んー　]+$/)) return alert("全て「ひらがな」にしてください");
-    const text = Replace(input.value).split("");
-    console.log(text)
+  const text = Replace(input.value).split("");
     
   try{
     let wav;
@@ -116,19 +115,21 @@ form.addEventListener("submit",async(event)=>{
     let wav2;
     let blob1;
     let blob2;
-    for(let i=0;i<text.length-1;i++){
+    
+    for(let i in text){
       if(i==0){
         blob1 = await ReadFile(text[i]);
       }
       blob2 = await ReadFile(text[i+1]);
       wav1 = await ReadBlob(blob1);
+      console.log(wav1)
       wav2 = await ReadBlob(blob2);
       wav = Convert(wav1,wav2);
       blob1 = new Blob([new Uint8Array(wav).buffer],{type:"audio/wav"})
       console.log(blob1)
     }
-  //Output(new Uint8Array(wav).buffer)
-  wav.SaveToFile("debiruman.wav","audio/wav");   
+    //Output(new Uint8Array(wav).buffer)
+    wav.SaveToFile("debiruman.wav","audio/wav");   
   }catch(e){
     console.log(e)
     alert(e)
