@@ -121,7 +121,7 @@ form.addEventListener("submit",async(event)=>{
     console.log(wav2)
     let wav = Convert(wav1,wav2);
     console.log(wav)
-    wav1 = new TWaveFormat(new Uint8Array(wav))
+    wav1 = new Uint8Array(wav)
     console.log(wav1)
     let blob3 = await ReadFile(text[2]);
     console.log(blob3)
