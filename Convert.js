@@ -116,7 +116,7 @@ form.addEventListener("submit",async(event)=>{
     let blob1;
     let blob2;
     
-    for(let i in text){
+    for(let i;i < text.length-1;i++){
       if(i==0){
         blob1 = await ReadFile(text[i]);
         wav1 = await ReadBlob(blob1);
