@@ -16,6 +16,7 @@ async function ReadBlob(blob){//Blob解析
   return new Promise((resolve)=>{
     const reader = new FileReader();
     reader.onload = ()=>{
+      console.log(reader.result)
       resolve(new TWaveFormat(new Uint8Array(reader.result)));
     };
     reader.readAsArrayBuffer(blob);
